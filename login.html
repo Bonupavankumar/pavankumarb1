@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <link rel="stylesheet" href="login.css">
+    <style>
+        /* Add your CSS styles for the login page here */
+    </style>
+</head>
+<body>
+    <div class="login-container">
+        <img src="cdaclogo.webp" alt="Your Image">
+        
+        <h1>Login</h1>
+        <form id="loginForm">
+            <label for="username">Username:</label>
+            <input type="text" id="username" name="username" required><br><br>
+
+            <label for="password">Password:</label>
+            <input type="password" id="password" name="password" required><br><br>
+
+            <button type="submit">Login</button>
+            <button type="button" onclick="cancelLogin()">Cancel</button>
+        </form>
+    </div>
+
+    <script>
+        // Function to handle login form submission
+        document.getElementById('loginForm').addEventListener('submit', function(event) {
+            event.preventDefault(); // Prevent form submission for demonstration
+
+            // Get entered username and password
+            var username = document.getElementById('username').value;
+            var password = document.getElementById('password').value;
+
+            // Check if the entered credentials are valid
+            // Check if the entered credentials are valid
+         if (username === 'pavan' && password === 'Pavan2001@') {
+    // Redirect to the dashboard page
+         window.location.href = 'dashboard.html';
+        } else {
+            alert('Invalid username or password. Please try again.');
+        }
+
+        });
+
+        // Function to handle cancel button
+        function cancelLogin() {
+            // Redirect to a different page or take other actions as needed
+            // For example, redirect to the homepage
+            window.location.href = 'index.html';
+        }
+    </script>
+</body>
+</html>

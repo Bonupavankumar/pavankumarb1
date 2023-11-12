@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create Virtual Machine</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="sidebar">
+        <a href="dashboard.html">Dashboard</a>
+        <a href="#" id="createVmButton">CREATE VM</a>
+    </div>
+
+    <div class="sidebar">
+        <h1>Create Virtual Machine</h1>
+
+        <!-- VM creation form -->
+        <form id="vmCreationForm">
+            <label for="numOfVMs">Enter the number of VMs:</label>
+            <input type="number" id="numOfVMs" name="numOfVMs" required><br><br>
+
+            <label for="baseVMs">Enter the base number of VMs:</label>
+            <input type="number" id="baseVMs" name="baseVMs" required><br><br>
+
+            <label for="sourceImage">Enter the source image:</label>
+            <input type="text" id="sourceImage" name="sourceImage" required><br><br>
+
+            <label for="flavour">Choose a flavor:</label>
+            <select id="flavour" name="flavour" required>
+                <option value="small">Small</option>
+                <option value="medium">Medium</option>
+                <option value="large">Large</option>
+            </select><br><br>
+
+            <!-- Buttons for Create VM and Cancel -->
+            <div class="button-container">
+                <button type="submit" class="create-button">Create VM</button>
+                <button type="button" class="cancel-button" id="cancelButton">Cancel</button>
+            </div>
+        </form>
+    </div>
+
+    <script>
+        // Add a click event listener to the "CREATE VM" button
+        var createVmButton = document.getElementById('createVmButton');
+        createVmButton.addEventListener('click', function() {
+            window.history.back(); // Go back to the dashboard page
+        });
+
+        // Handle form submission
+        var vmCreationForm = document.getElementById('vmCreationForm');
+        vmCreationForm.addEventListener('submit', function(event) {
+            event.preventDefault(); // Prevent the default form submission
+
+            // Get form data
+            var formData = new FormData(vmCreationForm);
+
+            // Display the data on a new page (you can customize this)
+            var vmDetailsPage = window.open('', 'VM Details', 'width=400,height=400');
+            vmDetailsPage.document.write('<h1>Virtual Machine Details</h1>');
+            vmDetailsPage.document.write('<pre>' + JSON.stringify(Object.fromEntries(formData), null, 2) + '</pre>');
+        });
+
+        // Add a click event listener to the "Cancel" button
+        var cancelButton = document.getElementById('cancelButton');
+        cancelButton.addEventListener('click', function() {
+            // Redirect to a different page or take other actions as needed
+            window.location.href = 'dashboard.html';
+        });
+    </script>
+</body>
+</html>
